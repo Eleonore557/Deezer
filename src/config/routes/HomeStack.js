@@ -1,6 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import MusicPlayer from '../../../screens/MusicPlayer'
+import MusicPlayer from '../../screens/MusicPlayer'
+import Favorite from '../../screens/favorite'
 import { StatusBar } from 'react-native'
 
 
@@ -10,7 +11,8 @@ const HomeStack = () => {
   return (
     <Stack.Navigator>
       <StatusBar barStyle="light-content"/>
-      <Stack.Screen name='MusicPlayer' component={MusicPlayer} />
+      <Stack.Screen name="Let's do it !" component={MusicPlayer} />
+      <Stack.Screen name='Favoris' component={Favorite} />
     </Stack.Navigator>
   )
 }
