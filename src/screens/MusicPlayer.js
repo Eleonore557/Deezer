@@ -1,7 +1,9 @@
 import { View, SafeAreaView, TouchableOpacity, Dimensions, Image, Text, FlatList, Animated } from 'react-native'
 import React, {useEffect, useState, useRef} from 'react'
 import styled from 'styled-components'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
 import songs from '../../model/Data'
 import Slider from '@react-native-community/slider';
 import TrackPlayer, {Capability, Event, RepeatMode, State, usePlaybackState, usePlayerbackState, useProgress, useTrackPlayerEvents} from 'react-native-track-player'
@@ -82,10 +84,10 @@ const MusicPlayer = () => {
 
     const repeatIcon = () => {
       if(repeatMode == 'off') {
-        return 'repeat'
+        return 'repeat-off'
       }
       if(repeatMode == 'track') {
-        return 'repeat'
+        return 'repeat-once'
       }
       if(repeatMode == 'repeat') {
         return 'repeat'
@@ -202,17 +204,17 @@ const MusicPlayer = () => {
         </ProgressLevelDuration>
       
         <MusicControlsContainer>
-          <TouchableOpacity onPress={skipToNext}>
-            <Icon name="backward" size={30}/>
+          <TouchableOpacity onPress={skipToPrevious}>
+            <Icon name="skip-backward" size={40}/>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => togglePayBack(PlayBackState)}>
             <Icon name={
-              PlayBackState === State.Playing ? "pause" : "play" } size={30}/>
+              PlayBackState === State.Playing ? "pause" : "play" } size={40}/>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={skipToPrevious}>
-            <Icon name="forward" size={30}/>
+          <TouchableOpacity onPress={skipToNext}>
+            <Icon name="skip-forward" size={40}/>
           </TouchableOpacity>
         </MusicControlsContainer>
       </View>
@@ -227,21 +229,21 @@ const MusicPlayer = () => {
         renderItem={({ item }) => (
 
           <TouchableOpacity onPress={() => {}}>
-            <Icon name="heart" size={30}/>
+            <Icon name="heart" size={40}/>
           </TouchableOpacity>
           )}
         />
           <TouchableOpacityIcon onPress={changeRepeatMode}>
-            <Icon name={`${repeatIcon()}`} size={30}
+            <Icon name={`${repeatIcon()}`} size={40}
             color={repeatMode !== 'repeat' ? '#FFD369' : "#888888"}/>
           </TouchableOpacityIcon>
 
           <TouchableOpacityIcon onPress={() => {}}>
-            <Icon name="bars" size={30}/>
+            <Icon name="view-headline" size={40}/>
           </TouchableOpacityIcon>
 
           <TouchableOpacityIcon onPress={() => {}}>
-            <Icon name="share" size={30}/>
+            <Icon name="share" size={40}/>
           </TouchableOpacityIcon>
         </BottomIconContainer>
       </BottomSection>
@@ -338,7 +340,7 @@ const MusicControlsContainer = styled.View `
   marginBottom: 5%;
 `
 const TouchableOpacityIcon = styled.TouchableOpacity`
-  margin-right: 65px;
+  margin-right: 55px;
 `
 
 const FlatListImage = styled.View`
